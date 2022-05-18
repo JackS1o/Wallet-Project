@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { fetchApi } from '../actions';
 
 class Wallet extends React.Component {
+  async componentDidMount() {
+    const { returnApi } = this.props;
+    await returnApi();
+  }
+
   render() {
     const { stateEmail } = this.props;
     return (
@@ -21,8 +27,13 @@ const mapStateToProps = (state) => ({
   stateEmail: state.user.email,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  returnApi: (api) => dispatch(fetchApi(api)),
+});
+
 Wallet.propTypes = {
-  stateEmail: PropTypes.shape(PropTypes.object).isRequired,
+  stateEmail: PropTypes.string.isRequired,
+  returnApi: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(Wallet);
+export default connect(mapStateToProps, mapDispatchToProps)(Wallet);
