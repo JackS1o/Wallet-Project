@@ -1,6 +1,6 @@
 export const USER_EMAIL = 'USER_EMAIL';
 export const CURRENCY = 'CURRENCY';
-export const MOEDA = 'MOEDA';
+export const FORM_STATE = 'FORM_STATE';
 
 export const userEmail = (email) => ({
   type: USER_EMAIL,
@@ -12,13 +12,13 @@ export const currentCurrency = (currency) => ({
   currency,
 });
 
-export const currentMoeda = () => ({
-  type: MOEDA,
+export const formState = (payload) => ({
+  type: FORM_STATE,
+  payload,
 });
 
 export function fetchApi() {
   return async (dispatch) => {
-    dispatch(currentMoeda());
     const url = 'https://economia.awesomeapi.com.br/json/all';
     const response = await fetch(url);
     const data = await response.json();
