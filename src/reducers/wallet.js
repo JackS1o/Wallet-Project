@@ -1,4 +1,4 @@
-import { CURRENCY, FORM_STATE } from '../actions';
+import { CURRENCY, FORM_STATE, REMOVE_LIST } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -15,6 +15,11 @@ function wallet(state = INITIAL_STATE, action) {
     return {
       ...state,
       expenses: [...state.expenses, action.payload],
+    };
+  case REMOVE_LIST:
+    return {
+      ...state,
+      expenses: [...action.removed],
     };
   default:
     return state;

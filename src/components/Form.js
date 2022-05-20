@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchApi, formState } from '../actions';
 
+const alimento = 'Alimentação';
+
 class Form extends React.Component {
   constructor() {
     super();
@@ -11,8 +13,8 @@ class Form extends React.Component {
       currency: 'USD',
       description: '',
       method: 'Dinheiro',
-      tag: 'Alimentação',
-      value: '',
+      tag: alimento,
+      value: '0',
       exchangeRates: {},
     };
   }
@@ -34,11 +36,11 @@ class Form extends React.Component {
     formData(this.state);
     this.setState((prev) => ({
       id: prev.id + 1,
-      currency: '',
+      currency: 'USD',
       description: '',
-      method: '',
-      tag: '',
-      value: '',
+      method: 'Dinheiro',
+      tag: alimento,
+      value: '0',
       exchangeRates: {},
     }));
   }

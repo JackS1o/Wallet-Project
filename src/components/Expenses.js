@@ -3,31 +3,47 @@ import PropTypes from 'prop-types';
 
 class Expenses extends React.Component {
   render() {
-    const { item } = this.props;
+    const { stateSaved, deleteBtn } = this.props;
     return (
-      <tr>
-        <td>{item.description}</td>
-        <td>{item.tag}</td>
-        <td>{item.method}</td>
-        <td>{parseFloat(item.value).toFixed(2)}</td>
-        <td>{item.exchangeRates[item.currency].name}</td>
-        <td>{parseFloat(item.exchangeRates[item.currency].ask).toFixed(2)}</td>
-        <td>
-          {parseFloat(item.exchangeRates[item.currency].ask
-          * item.value).toFixed(2)}
-        </td>
-        <td>Real</td>
-        <td>
-          <button type="button">Editar</button>
-          <button type="button">Excluir</button>
-        </td>
-      </tr>
+      <tbody>
+        {stateSaved.map((item) => (
+          <tr key={ item.id }>
+            <td>{item.description}</td>
+            <td>{item.tag}</td>
+            <td>{item.method}</td>
+            <td>{parseFloat(item.value).toFixed(2)}</td>
+            <td>{item.exchangeRates[item.currency].name}</td>
+            <td>{parseFloat(item.exchangeRates[item.currency].ask).toFixed(2)}</td>
+            <td>
+              {parseFloat(item.exchangeRates[item.currency].ask
+              * item.value).toFixed(2)}
+            </td>
+            <td>Real</td>
+            <td>
+              <button
+                data-testid="edit-btn"
+                type="button"
+              >
+                Editar
+              </button>
+              <button
+                data-testid="delete-btn"
+                type="button"
+                onClick={ () => deleteBtn(item) }
+              >
+                Excluir
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
     );
   }
 }
 
 Expenses.propTypes = {
-  item: PropTypes.objectOf(Object).isRequired,
+  stateSaved: PropTypes.arrayOf(Object).isRequired,
+  deleteBtn: PropTypes.func.isRequired,
 };
 
 export default Expenses;

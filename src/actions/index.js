@@ -1,6 +1,7 @@
 export const USER_EMAIL = 'USER_EMAIL';
 export const CURRENCY = 'CURRENCY';
 export const FORM_STATE = 'FORM_STATE';
+export const REMOVE_LIST = 'REMOVE_LIST';
 
 export const userEmail = (email) => ({
   type: USER_EMAIL,
@@ -15,6 +16,11 @@ export const currentCurrency = (currency) => ({
 export const formState = (payload) => ({
   type: FORM_STATE,
   payload,
+});
+
+export const removeList = (removed) => ({
+  type: REMOVE_LIST,
+  removed,
 });
 
 export function fetchApi() {

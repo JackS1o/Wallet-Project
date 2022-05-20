@@ -1,9 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { removeList } from '../actions';
 import Expenses from './Expenses';
 
 class Table extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+    };
+  }
+
+  deleteBtn = (obj) => {
+    const { stateSaved, removeeed } = this.props;
+    const updatedState = stateSaved.filter((element) => element.id !== obj.id);
+    removeeed(updatedState);
+  };
+
   render() {
     const { stateSaved } = this.props;
     console.log(stateSaved);
@@ -21,13 +34,10 @@ class Table extends React.Component {
             <th>Moeda de conversão </th>
             <th>Editar/Excluir</th>
           </tr>
-          { stateSaved.map((item, index) => (
-            <tbody key={ index }>
-              <Expenses
-                item={ item }
-              />
-            </tbody>
-          ))}
+          <Expenses
+            stateSaved={ stateSaved }
+            deleteBtn={ this.deleteBtn }
+          />
         </table>
       </div>
     );
@@ -38,8 +48,13 @@ const mapStateToProps = (state) => ({
   stateSaved: state.wallet.expenses,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  removeeed: (formData) => dispatch(removeList(formData)),
+});
+
 Table.propTypes = {
   stateSaved: PropTypes.arrayOf(Object).isRequired,
+  removeeed: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(Table);
+export default connect(mapStateToProps, mapDispatchToProps)(Table);
