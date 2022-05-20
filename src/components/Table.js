@@ -1,7 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Expenses from './Expenses';
 
 class Table extends React.Component {
   render() {
+    const { stateSaved } = this.props;
+    console.log(stateSaved);
     return (
       <div>
         <table>
@@ -16,10 +21,25 @@ class Table extends React.Component {
             <th>Moeda de conversão </th>
             <th>Editar/Excluir</th>
           </tr>
+          { stateSaved.map((item, index) => (
+            <tbody key={ index }>
+              <Expenses
+                item={ item }
+              />
+            </tbody>
+          ))}
         </table>
       </div>
     );
   }
 }
 
-export default Table;
+const mapStateToProps = (state) => ({
+  stateSaved: state.wallet.expenses,
+});
+
+Table.propTypes = {
+  stateSaved: PropTypes.arrayOf(Object).isRequired,
+};
+
+export default connect(mapStateToProps)(Table);

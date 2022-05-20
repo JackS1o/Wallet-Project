@@ -21,7 +21,7 @@ class Wallet extends React.Component {
         </header>
         <div>
           <Form />
-          <Table />
+          <Table askValue={ askValue } />
         </div>
       </div>
     );
