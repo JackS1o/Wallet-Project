@@ -1,25 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removeList } from '../actions';
+import { changeBtn, removeList } from '../actions';
 import Expenses from './Expenses';
 
 class Table extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-    };
-  }
-
   deleteBtn = (obj) => {
     const { stateSaved, removeeed } = this.props;
     const updatedState = stateSaved.filter((element) => element.id !== obj.id);
     removeeed(updatedState);
   };
 
+  editBtn = (obj) => {
+    const { changeValue } = this.props;
+    changeValue(true, obj.id);
+  }
+
   render() {
     const { stateSaved } = this.props;
-    console.log(stateSaved);
     return (
       <div>
         <table>
@@ -37,6 +35,7 @@ class Table extends React.Component {
           <Expenses
             stateSaved={ stateSaved }
             deleteBtn={ this.deleteBtn }
+            editBtn={ this.editBtn }
           />
         </table>
       </div>
@@ -50,11 +49,13 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   removeeed: (formData) => dispatch(removeList(formData)),
+  changeValue: (value, id) => dispatch(changeBtn(value, id)),
 });
 
 Table.propTypes = {
   stateSaved: PropTypes.arrayOf(Object).isRequired,
   removeeed: PropTypes.func.isRequired,
+  changeValue: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);

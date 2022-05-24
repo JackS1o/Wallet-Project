@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchApi, formState } from '../actions';
+import { fetchApi, formState, sendNewValuesActions } from '../actions';
 
 const alimento = 'Alimentação';
 
@@ -45,9 +45,24 @@ class Form extends React.Component {
     }));
   }
 
+  sendExpenses = () => {
+    const { editBtnData, sendNewValues } = this.props;
+    const { currency, description, method, tag, value } = this.state;
+    const newObjEdited = {
+      id: editBtnData.id,
+      currency,
+      description,
+      method,
+      tag,
+      value,
+    };
+    sendNewValues(newObjEdited);
+  }
+
   render() {
     const { currency, description, method, tag, value } = this.state;
-    const { currentCoin } = this.props;
+    const { currentCoin, editBtnData } = this.props;
+    const result = editBtnData ? editBtnData.isOnEditMode : false;
     return (
       <form>
         <label htmlFor="Despesa">
@@ -76,6 +91,7 @@ class Form extends React.Component {
             id="Moeda"
             name="currency"
             value={ currency }
+            data-testid="currency-input"
             onChange={ this.formExpense }
           >
             {currentCoin.map((moedas, index) => (
@@ -109,12 +125,22 @@ class Form extends React.Component {
           <option>Transporte</option>
           <option>Saúde</option>
         </select>
-        <button
-          type="button"
-          onClick={ this.submitExpenses }
-        >
-          Adicionar despesa
-        </button>
+        { result ? (
+          <button
+            type="button"
+            onClick={ this.sendExpenses }
+          >
+            Editar despesa
+          </button>
+        )
+          : (
+            <button
+              type="button"
+              onClick={ this.submitExpenses }
+            >
+              Adicionar despesa
+            </button>
+          )}
       </form>
     );
   }
@@ -123,17 +149,21 @@ class Form extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
   returnApi: (api) => dispatch(fetchApi(api)),
   formData: (formData) => dispatch(formState(formData)),
+  sendNewValues: (newObj) => dispatch(sendNewValuesActions(newObj)),
 });
 
 const mapStateToProps = (state) => ({
   stateEmail: state.user.email,
   currentCoin: state.wallet.currencies,
+  editBtnData: state.wallet.editExpenses,
 });
 
 Form.propTypes = {
   returnApi: PropTypes.func.isRequired,
   currentCoin: PropTypes.arrayOf(PropTypes.string).isRequired,
   formData: PropTypes.func.isRequired,
+  editBtnData: PropTypes.func.isRequired,
+  sendNewValues: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

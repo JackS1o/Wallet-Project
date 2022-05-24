@@ -1,8 +1,9 @@
-import { CURRENCY, FORM_STATE, REMOVE_LIST } from '../actions';
+import { CURRENCY, FORM_STATE, REMOVE_LIST, CHANGE_BTN, NEW_VALUES } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
   expenses: [],
+  editExpenses: { isOnEditMode: false, id: 0 },
 };
 
 function wallet(state = INITIAL_STATE, action) {
@@ -20,6 +21,22 @@ function wallet(state = INITIAL_STATE, action) {
     return {
       ...state,
       expenses: [...action.removed],
+    };
+  case CHANGE_BTN:
+    return {
+      ...state,
+      editExpenses: { isOnEditMode: action.edit, id: action.id },
+    };
+  case NEW_VALUES:
+    return {
+      ...state,
+      expenses: state.expenses.map((despesa) => {
+        if (despesa.id === state.editExpenses.id) {
+          return { ...action.obj, exchangeRates: despesa.exchangeRates };
+        }
+        return despesa;
+      }),
+      editExpenses: { isOnEditMode: false, id: 0 },
     };
   default:
     return state;

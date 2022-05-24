@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Expenses extends React.Component {
   render() {
-    const { stateSaved, deleteBtn } = this.props;
+    const { stateSaved, deleteBtn, editBtn } = this.props;
     return (
       <tbody>
         {stateSaved.map((item) => (
@@ -23,6 +23,7 @@ class Expenses extends React.Component {
               <button
                 data-testid="edit-btn"
                 type="button"
+                onClick={ () => editBtn(item) }
               >
                 Editar
               </button>
@@ -44,6 +45,7 @@ class Expenses extends React.Component {
 Expenses.propTypes = {
   stateSaved: PropTypes.arrayOf(Object).isRequired,
   deleteBtn: PropTypes.func.isRequired,
+  editBtn: PropTypes.func.isRequired,
 };
 
 export default Expenses;
