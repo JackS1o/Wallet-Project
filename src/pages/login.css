@@ -1,0 +1,221 @@
+* {
+  box-sizing: border-box;
+  font-family: Josefin Sans, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.div-login-mae {
+  align-items: center;
+  background-color: #02060A;
+  display: flex;
+  height: 500px;
+  justify-content: center;
+}
+
+.div-login {
+  align-items: center;
+  background-color: #0e1114;
+  border-radius: 5px;
+  box-shadow: 6px 6px 10px 1px rgba(0,0,0,0.99);
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
+  justify-content: center;
+  width: 300px;
+}
+
+.label-login {
+  align-items: center;
+  background-color: #0e1114;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+}
+
+.input {
+  background-color: #0e1114;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.btn-enter {
+  background-color: #02ad83;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  height: 20px;
+  width: 50%;
+}
+
+.btn-enter:disabled {
+  background-color: #02ad825d;
+  color: white;
+}
+
+header {
+  background-color: #02060A;
+  color: #02ECB2;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+}
+
+.tabela {
+  border-collapse: collapse;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  width: 100%;
+}
+
+.tabela td , .tabela th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  width: 105px;
+}
+
+.tabela tr:nth-child( even ) {
+  background-color: #f2f2f2;
+}
+
+.tabela tr:hover {
+  background-color: #ddd;
+}
+
+.tabela th {
+  background-color: #04aa6d;
+  color: white;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  text-align: center;
+}
+
+.header-table {
+  display: grid;
+  grid: 'titulo email valor sigla'/ 2fr 2fr 1fr 1fr;
+  height: 100px;
+}
+
+.titulo {
+  align-items: center;
+  display: flex;
+  grid-area: titulo;
+  justify-content: center;
+}
+
+.email {
+  align-items: center;
+  display: flex;
+  grid-area: email;
+  justify-content: center;
+}
+
+.valor {
+  align-items: center;
+  display: flex;
+  grid-area: valor;
+  justify-content: center;
+}
+
+.sigla {
+  align-items: center;
+  display: flex;
+  grid-area: sigla;
+  justify-content: center;
+}
+
+.img-login {
+  background-color: #0e1114;
+  height: 50px;
+  width: 50px;
+}
+
+.login-text {
+  background-color: #0e1114;
+  color: white;
+}
+
+.header-login {
+  padding: 2%;
+}
+
+.form {
+  align-items: center;
+  background-color: #0e1114;
+  color: #fff;
+  display: flex;
+  height: 100px;
+  justify-content: space-evenly;
+}
+
+.td-btn {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn-edit {
+  background-color: rgba(50, 164, 240, 0.452);
+  border: 0;
+  border-radius: 10px;
+  color: rgb(47, 85, 255);
+  height: 30px;
+  width: 40px;
+}
+
+.btn-delete {
+  background-color: rgba(240, 50, 66, 0.452);
+  border: 0;
+  border-radius: 10px;
+  color: rgba(177, 43, 43, 0.897);
+  height: 30px;
+  width: 40px;
+}
+
+.btn-edit:hover {
+  background-color: rgba(28, 94, 138, 0.658);
+}
+
+.btn-delete:hover {
+  background-color: rgba(212, 46, 60, 0.89);
+}
+
+.inputs {
+  border: 0;
+  border-radius: 3px;
+  height: 24px;
+}
+
+.btn-despesa {
+  background-color: #02ad828e;
+  border: 0;
+  border-radius: 3px;
+  color: white;
+  height: 24px;
+  width: 200px;
+}
+
+.btn-despesa:hover {
+  background-color: #02ad83;
+  color: white;
+}
+
+.btn-despesa-edit {
+  background-color: rgba(47, 85, 255, 0.384);
+  border: 0;
+  border-radius: 3px;
+  color: white;
+  font-weight: 600;
+  height: 24px;
+  width: 200px;
+}
+
+.btn-despesa-edit:hover {
+  background-color: rgb(47, 85, 255);
+  color: white;
+}

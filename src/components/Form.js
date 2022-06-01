@@ -57,6 +57,14 @@ class Form extends React.Component {
       value,
     };
     sendNewValues(newObjEdited);
+    this.setState({
+      currency: 'USD',
+      description: '',
+      method: 'Dinheiro',
+      tag: alimento,
+      value: '0',
+      exchangeRates: {},
+    });
   }
 
   render() {
@@ -64,13 +72,14 @@ class Form extends React.Component {
     const { currentCoin, editBtnData } = this.props;
     const result = editBtnData ? editBtnData.isOnEditMode : false;
     return (
-      <form>
+      <form className="form">
         <label htmlFor="Despesa">
           Despesa
           <input
+            className="inputs"
             id="Despesa"
             data-testid="value-input"
-            type="text"
+            type="number"
             name="value"
             value={ value }
             onChange={ this.formExpense }
@@ -78,6 +87,7 @@ class Form extends React.Component {
         </label>
         <label htmlFor="Descrição">
           <input
+            className="inputs"
             data-testid="description-input"
             type="text"
             name="description"
@@ -88,6 +98,7 @@ class Form extends React.Component {
         <label htmlFor="Moeda">
           Moeda
           <select
+            className="inputs"
             id="Moeda"
             name="currency"
             value={ currency }
@@ -104,6 +115,7 @@ class Form extends React.Component {
           </select>
         </label>
         <select
+          className="inputs"
           data-testid="method-input"
           name="method"
           value={ method }
@@ -114,6 +126,7 @@ class Form extends React.Component {
           <option>Cartão de débito</option>
         </select>
         <select
+          className="inputs"
           data-testid="tag-input"
           name="tag"
           value={ tag }
@@ -127,6 +140,7 @@ class Form extends React.Component {
         </select>
         { result ? (
           <button
+            className="btn-despesa-edit"
             type="button"
             onClick={ this.sendExpenses }
           >
@@ -135,6 +149,7 @@ class Form extends React.Component {
         )
           : (
             <button
+              className="btn-despesa"
               type="button"
               onClick={ this.submitExpenses }
             >

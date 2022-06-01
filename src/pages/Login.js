@@ -41,33 +41,51 @@ class Login extends React.Component {
   render() {
     const { inputEmail, inputPassword, isDisabed } = this.state;
     return (
-      <div>
-        <label htmlFor="login">
-          <input
-            type="email"
-            data-testid="email-input"
-            placeholder="Email"
-            name="inputEmail"
-            value={ inputEmail }
-            onChange={ this.emailChange }
-          />
-          <input
-            type="password"
-            data-testid="password-input"
-            name="inputPassword"
-            value={ inputPassword }
-            placeholder="Password"
-            onChange={ this.emailChange }
-          />
-          <button
-            type="button"
-            disabled={ isDisabed }
-            onClick={ this.submitBtn }
-          >
-            Entrar
-          </button>
-        </label>
-      </div>
+      <>
+        <div>
+          <header className="header-login">
+            <h1>TrybeWallet</h1>
+          </header>
+        </div>
+        <div className="div-login-mae">
+          <div className="div-login">
+            <h1 className="login-text">Login</h1>
+            <img className="img-login" src="https://static.wixstatic.com/media/071ee2_4d02eb79427e42568bd1e72538dfd50b~mv2.png/v1/fill/w_853,h_801,al_c/071ee2_4d02eb79427e42568bd1e72538dfd50b~mv2.png" alt="wallet" />
+            <label
+              className="label-login"
+              htmlFor="login"
+            >
+              <input
+                className="input"
+                type="email"
+                data-testid="email-input"
+                placeholder="Email"
+                name="inputEmail"
+                value={ inputEmail }
+                onChange={ this.emailChange }
+              />
+              <input
+                className="input"
+                type="password"
+                data-testid="password-input"
+                name="inputPassword"
+                value={ inputPassword }
+                placeholder="Password"
+                onChange={ this.emailChange }
+              />
+              <button
+                className="btn-enter"
+                type="button"
+                disabled={ isDisabed }
+                onClick={ this.submitBtn }
+              >
+                Entrar
+              </button>
+            </label>
+          </div>
+        </div>
+
+      </>
     );
   }
 }

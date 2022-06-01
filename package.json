@@ -6,13 +6,14 @@
     "node": "16"
   },
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "10.0.4",
     "@testing-library/user-event": "7.2.1",
     "bootstrap": "4.5.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-icons": "3.11.0",
+    "react-icons": "^3.11.0",
     "react-redux": "7.2.1",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.3",
@@ -47,6 +48,7 @@
     "@sheerun/mutationobserver-shim": "0.3.3",
     "eslint": "6.8.0",
     "eslint-config-airbnb": "18.2.0",
+    "eslint-config-trybe-frontend": "1.2.3",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jest": "^24.3.6",
     "eslint-plugin-jsx-a11y": "6.4.1",
@@ -56,7 +58,6 @@
     "eslint-plugin-sonarjs": "0.5.0",
     "jest-localstorage-mock": "2.4.3",
     "stylelint": "13.8.0",
-    "stylelint-config-standard": "20.0.0",
-    "eslint-config-trybe-frontend": "1.2.3"
+    "stylelint-config-standard": "20.0.0"
   }
 }

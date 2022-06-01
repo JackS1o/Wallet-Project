@@ -20,7 +20,7 @@ class Table extends React.Component {
     const { stateSaved } = this.props;
     return (
       <div>
-        <table>
+        <table className="tabela">
           <tr>
             <th>Descrição</th>
             <th>Tag</th>

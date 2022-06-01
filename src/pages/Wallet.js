@@ -14,10 +14,11 @@ class Wallet extends React.Component {
     });
     return (
       <div>
-        <header>
-          <p data-testid="email-field">{ stateEmail }</p>
-          <p data-testid="total-field">{askValue.toFixed(2)}</p>
-          <p data-testid="header-currency-field">BRL</p>
+        <header className="header-table">
+          <h1 className="titulo">TryWallet</h1>
+          <p data-testid="email-field" className="email">{ stateEmail }</p>
+          <p data-testid="total-field" className="valor">{askValue.toFixed(2)}</p>
+          <p data-testid="header-currency-field" className="sigla">BRL</p>
         </header>
         <div>
           <Form />
