@@ -96,6 +96,8 @@ header {
   text-align: center;
 }
 
+
+
 .header-table {
   display: grid;
   grid: 'titulo email valor sigla'/ 2fr 2fr 1fr 1fr;
